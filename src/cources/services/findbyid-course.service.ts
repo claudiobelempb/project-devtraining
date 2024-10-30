@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { Course } from '../entities/course.entity'
 
 @Injectable()
@@ -20,6 +20,12 @@ export class CourseFindByIdService {
   constructor() {}
 
   async execute(id: number): Promise<Course> {
-    return this.courses.find(couser => couser.id === id)
+    const course = this.courses.find(couser => couser.id === id)
+
+    if (!course) {
+      throw new HttpException(`Course id ${id} not found`, HttpStatus.NOT_FOUND)
+    }
+
+    return course
   }
 }
