@@ -7,7 +7,7 @@ export class CourseCreateService {
   private courses: Course[] = []
 
   constructor() {}
-  async execute(request: CreateCourseDTO): Promise<Course[]> {
+  async execute(request: CreateCourseDTO): Promise<CreateCourseDTO[]> {
     this.courses.push(request)
     return this.courses
   }

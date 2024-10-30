@@ -8,7 +8,7 @@ export class CreateCourseController {
   constructor(private readonly service: CourseCreateService) {}
 
   @Post()
-  async handle(@Body() request: CreateCourseDTO): Promise<Course[]> {
+  async handle(@Body() request: CreateCourseDTO): Promise<CreateCourseDTO[]> {
     return await this.service.execute(request)
   }
 }
