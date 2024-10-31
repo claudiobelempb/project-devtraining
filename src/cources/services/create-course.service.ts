@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common'
-import { Course } from '../entities/course.entity'
+import { CourseDTO } from '../dto/course.dto'
 import { CreateCourseDTO } from '../dto/create-course.dto'
 
 @Injectable()
 export class CourseCreateService {
-  private courses: Course[] = []
+  private courses: CourseDTO[] = []
 
   constructor() {}
-  async execute(request: CreateCourseDTO): Promise<CreateCourseDTO[]> {
+  async execute(request: CourseDTO): Promise<CourseDTO> {
     this.courses.push(request)
-    return this.courses
+    return request
   }
 }

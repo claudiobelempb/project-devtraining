@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common'
-import { Course } from '../entities/course.entity'
+import { CourseDTO } from '../dto/course.dto'
 
 @Injectable()
 export class CourseDeleteService {
-  private courses: Course[] = [
+  private courses: CourseDTO[] = [
     {
       id: 1,
       name: 'Fundamentos do Framework NestJS',

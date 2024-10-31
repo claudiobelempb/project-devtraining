@@ -8,6 +8,6 @@ export class DeleteCourseController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async handle(@Param('id') id: number): Promise<void> {
-    await this.service.execute(+id)
+    await this.service.execute(id)
   }
 }

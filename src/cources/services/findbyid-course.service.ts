@@ -1,9 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { Course } from '../entities/course.entity'
+import { CourseDTO } from '../dto/course.dto'
 
 @Injectable()
 export class CourseFindByIdService {
-  private courses: Course[] = [
+  private courses: CourseDTO[] = [
     {
       id: 1,
       name: 'Fundamentos do Framework NestJS',
@@ -19,7 +20,7 @@ export class CourseFindByIdService {
   ]
   constructor() {}
 
-  async execute(id: number): Promise<Course> {
+  async execute(id: number): Promise<CourseDTO> {
     const course = this.courses.find(couser => couser.id === id)
 
     if (!course) {
