@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  db:
+    build: .
+    container_name: devtrainig-db
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - .docker:/var/lib/postgresql/data 777
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=devtrainig
