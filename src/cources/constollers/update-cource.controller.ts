@@ -1,6 +1,6 @@
 import { Body, Controller, Param, Put } from '@nestjs/common'
 import { CourseUpdateService } from '../services/update-course.service'
-import { UpdateCourseDTO } from '../dto/update-course.dto'
+import { CourseType } from '../response/course.response'
 
 @Controller('courses')
 export class UpdateCourseController {
@@ -9,8 +9,8 @@ export class UpdateCourseController {
   @Put(':id')
   handle(
     @Param('id') id: number,
-    @Body() request: UpdateCourseDTO,
-  ): Promise<UpdateCourseDTO> {
+    @Body() request: CourseType.CourseResponse,
+  ): Promise<CourseType.CourseResponse> {
     return this.service.execute(id, request)
   }
 }

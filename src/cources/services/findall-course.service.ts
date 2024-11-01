@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common'
+import { CourseType } from '../response/course.response'
 import { Course } from '../entities/course.entity'
-import { CourseDTO } from '../dto/course.dto'
 
 @Injectable()
 export class CourseFindAllService {
-  private courses: CourseDTO[] = [
+  private courses: Course[] = [
     {
       id: 1,
       name: 'Fundamentos do Framework NestJS',
@@ -19,7 +19,7 @@ export class CourseFindAllService {
     },
   ]
   constructor() {}
-  async execute(): Promise<CourseDTO[]> {
+  async execute(): Promise<CourseType.CourseResponse[]> {
     return this.courses
   }
 }

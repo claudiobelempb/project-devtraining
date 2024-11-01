@@ -9,9 +9,11 @@ import { CourseFindAllService } from './services/findall-course.service'
 import { CourseFindByIdService } from './services/findbyid-course.service'
 import { CourseUpdateService } from './services/update-course.service'
 import { CourseDeleteService } from './services/delete-course.service'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { Course } from './entities/course.entity'
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forFeature([Course])],
   controllers: [
     CreateCourseController,
     FindAllCourseController,

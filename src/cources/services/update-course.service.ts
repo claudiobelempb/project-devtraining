@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common'
 import { Course } from '../entities/course.entity'
-import { UpdateCourseDTO } from '../dto/update-course.dto'
-import { CourseDTO } from '../dto/course.dto'
+import { CourseType } from '../response/course.response'
 
 @Injectable()
 export class CourseUpdateService {
-  private courses: CourseDTO[] = [
+  private courses: Course[] = [
     {
       id: 1,
       name: 'Fundamentos do Framework NestJS',
@@ -16,8 +15,8 @@ export class CourseUpdateService {
   constructor() {}
   async execute(
     id: number,
-    request: UpdateCourseDTO,
-  ): Promise<UpdateCourseDTO> {
+    request: CourseType.CourseResponse,
+  ): Promise<CourseType.CourseResponse> {
     const existingCourse = this.courses.find(course => course.id === id)
     if (existingCourse) {
       const index = this.courses.findIndex(course => course.id === id)

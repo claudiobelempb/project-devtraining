@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common'
 import { CourseFindAllService } from '../services/findall-course.service'
-import { CourseDTO } from '../dto/course.dto'
+import { CourseType } from '../response/course.response'
 
 @Controller('courses')
 export class FindAllCourseController {
   constructor(private readonly service: CourseFindAllService) {}
 
   @Get()
-  handle(): Promise<CourseDTO[]> {
+  handle(): Promise<CourseType.CourseResponse[]> {
     return this.service.execute()
   }
 }

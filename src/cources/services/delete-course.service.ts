@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import { CourseDTO } from '../dto/course.dto'
-
+import { CourseType } from '../response/course.response'
 @Injectable()
 export class CourseDeleteService {
-  private courses: CourseDTO[] = [
+  private courses: CourseType.CourseResponse[] = [
     {
       id: 1,
       name: 'Fundamentos do Framework NestJS',
