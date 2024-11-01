@@ -1,32 +1,26 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { Course } from '../entities/course.entity'
 import { CourseType } from '../response/course.response'
+import { Repository } from 'typeorm'
+import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()
 export class CourseUpdateService {
-  private courses: Course[] = [
-    {
-      id: 1,
-      name: 'Fundamentos do Framework NestJS',
-      description: 'Curso sobre fundamento do framework NestJS',
-      tags: ['node.js', 'nestjs', 'javascript', 'typescript'],
-    },
-  ]
-  constructor() {}
+  constructor(
+    @InjectRepository(Course)
+    private readonly courseRepository: Repository<Course>,
+  ) {}
   async execute(
     id: number,
     request: CourseType.CourseResponse,
   ): Promise<CourseType.CourseResponse> {
-    const existingCourse = this.courses.find(course => course.id === id)
-    if (existingCourse) {
-      const index = this.courses.findIndex(course => course.id === id)
-      this.courses[index] = {
-        id,
-        name: request.name,
-        description: request.description,
-        tags: request.tags,
-      }
+    const entity = await this.courseRepository.preload({
+      ...request,
+      id,
+    })
+    if (!entity) {
+      throw new NotFoundException(`Course id ${id} not found`)
     }
-    return request
+    return this.courseRepository.save(entity)
   }
 }
