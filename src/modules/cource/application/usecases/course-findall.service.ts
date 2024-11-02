@@ -11,6 +11,8 @@ export class CourseFindAllService {
     private readonly courseRepository: Repository<Course>,
   ) {}
   async execute(): Promise<CourseType.CourseResponse[]> {
-    return await this.courseRepository.find()
+    return await this.courseRepository.find({
+      relations: ['tags'],
+    })
   }
 }

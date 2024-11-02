@@ -22,6 +22,7 @@ export class CourseFindByIdService {
         where: {
           id,
         },
+        relations: ['tags'],
       })
 
       if (!entity) {

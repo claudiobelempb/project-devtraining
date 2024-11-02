@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Course } from 'src/modules/cource/domain/entities/course.entity'
+
 import { DataSourceOptions } from 'typeorm'
 import { Tag } from '../tag/domain/entities/tag.entity'
+import { Course } from '../cource/domain/entities/course.entity'
 export const dataSourceOption: DataSourceOptions = {
   type: 'postgres',
   host: 'localhost',

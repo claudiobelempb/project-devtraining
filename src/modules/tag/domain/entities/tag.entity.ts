@@ -1,5 +1,6 @@
 import { Course } from 'src/modules/cource/domain/entities/course.entity'
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -7,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
+import { randomUUID } from 'node:crypto'
 
 @Entity('tag')
 export class Tag {
@@ -19,12 +21,20 @@ export class Tag {
   @Column({ default: true })
   active?: boolean
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt?: Date
 
   @ManyToMany(() => Course, course => course.tags)
   courses: Course[]
+
+  @BeforeInsert()
+  generatedId() {
+    if (this.id) {
+      return
+    }
+    this.id = randomUUID()
+  }
 }
