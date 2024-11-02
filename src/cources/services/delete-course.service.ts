@@ -9,16 +9,20 @@ export class CourseDeleteService {
     @InjectRepository(Course)
     private readonly courseRepository: Repository<Course>,
   ) {}
-  async execute(id: number): Promise<void> {
-    const entity = await this.courseRepository.findOne({
-      where: {
-        id,
-      },
-    })
-    if (!entity) {
+  async execute(id: string): Promise<void> {
+    try {
+      const entity = await this.courseRepository.findOne({
+        where: {
+          id,
+        },
+      })
+      if (!entity) {
+        throw new NotFoundException(`Course id ${id} not found`)
+      }
+
+      this.courseRepository.remove(entity)
+    } catch (error) {
       throw new NotFoundException(`Course id ${id} not found`)
     }
-
-    this.courseRepository.remove(entity)
   }
 }

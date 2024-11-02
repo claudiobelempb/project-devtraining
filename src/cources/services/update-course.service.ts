@@ -11,7 +11,7 @@ export class CourseUpdateService {
     private readonly courseRepository: Repository<Course>,
   ) {}
   async execute(
-    id: number,
+    id: string,
     request: CourseType.CourseResponse,
   ): Promise<CourseType.CourseResponse> {
     const entity = await this.courseRepository.preload({

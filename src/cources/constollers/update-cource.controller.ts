@@ -8,7 +8,7 @@ export class UpdateCourseController {
 
   @Put(':id')
   handle(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Body() request: CourseType.CourseResponse,
   ): Promise<CourseType.CourseResponse> {
     return this.service.execute(id, request)

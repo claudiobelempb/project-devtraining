@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('tb_course')
 export class Course {
-  @PrimaryGeneratedColumn()
-  id?: number
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @Column()
   name: string

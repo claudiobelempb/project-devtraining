@@ -2,7 +2,7 @@ import { IsString } from 'class-validator'
 
 export namespace CourseType {
   export class CourseResponse {
-    id?: number
+    id?: string
     @IsString()
     readonly name: string
     @IsString()
