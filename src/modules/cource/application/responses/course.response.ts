@@ -1,4 +1,5 @@
 import { IsString } from 'class-validator'
+import { Tag } from 'src/modules/tag/domain/entities/tag.entity'
 
 export namespace CourseType {
   export class CourseResponse {
@@ -8,6 +9,6 @@ export namespace CourseType {
     @IsString()
     readonly description: string
     @IsString({ each: true })
-    readonly tags: string[]
+    readonly tags: Tag[]
   }
 }

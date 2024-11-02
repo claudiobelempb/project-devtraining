@@ -1,12 +1,16 @@
+import { Tag } from 'src/modules/tag/domain/entities/tag.entity'
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
 
-@Entity('tb_course')
+@Entity('course')
 export class Course {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -26,6 +30,7 @@ export class Course {
   @UpdateDateColumn()
   updatedAt?: Date
 
-  @Column('json', { nullable: true })
-  tags: string[]
+  @JoinTable()
+  @ManyToMany(() => Tag, tag => tag.courses)
+  tags: Tag[]
 }

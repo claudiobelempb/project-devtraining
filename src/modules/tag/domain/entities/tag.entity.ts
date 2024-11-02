@@ -1,12 +1,14 @@
+import { Course } from 'src/modules/cource/domain/entities/course.entity'
 import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
 
-@Entity('tb_tag')
+@Entity('tag')
 export class Tag {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -22,4 +24,7 @@ export class Tag {
 
   @UpdateDateColumn()
   updatedAt?: Date
+
+  @ManyToMany(() => Course, course => course.tags)
+  courses: Course[]
 }
