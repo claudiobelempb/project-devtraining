@@ -10,12 +10,12 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 
-import { randomUUID } from 'node:crypto'
+import { v4 as uuidv4 } from 'uuid'
 
 @Entity('course')
 export class Course {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: string = uuidv4()
 
   @Column()
   name: string
@@ -23,13 +23,13 @@ export class Course {
   @Column()
   description: string
 
-  @Column({ default: true })
-  active?: boolean
+  @Column({ type: 'boolean', default: false })
+  isActive?: boolean
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updatedAt?: Date
 
   @JoinTable()
@@ -43,6 +43,6 @@ export class Course {
     if (this.id) {
       return
     }
-    this.id = randomUUID()
+    this.id = uuidv4()
   }
 }
