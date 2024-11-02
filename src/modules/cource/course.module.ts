@@ -4,13 +4,13 @@ import { FindAllCourseController } from './constollers/findall-cource.controller
 import { FindByIdCourseController } from './constollers/findbyid-cource.controller'
 import { UpdateCourseController } from './constollers/update-cource.controller'
 import { DeleteCourseController } from './constollers/delete-cource.controller'
-import { CourseCreateService } from './services/create-course.service'
-import { CourseFindAllService } from './services/findall-course.service'
-import { CourseFindByIdService } from './services/findbyid-course.service'
-import { CourseUpdateService } from './services/update-course.service'
-import { CourseDeleteService } from './services/delete-course.service'
+import { CourseCreateService } from './application/usecases/course-create.service'
+import { CourseFindAllService } from './application/usecases/course-findall.service'
+import { CourseFindByIdService } from './application/usecases/course-findbyid.service'
+import { CourseUpdateService } from './application/usecases/course-update.service'
+import { CourseDeleteService } from './application/usecases/course-delete.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Course } from './entities/course.entity'
+import { Course } from './domain/entities/course.entity'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Course])],

@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common'
-import { CourseFindAllService } from '../services/findall-course.service'
-import { CourseType } from '../response/course.response'
+import { CourseFindAllService } from '../application/usecases/course-findall.service'
+import { CourseType } from '../application/responses/course.response'
 
 @Controller('courses')
 export class FindAllCourseController {

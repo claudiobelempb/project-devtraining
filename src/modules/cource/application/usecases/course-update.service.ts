@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
-import { Course } from '../entities/course.entity'
-import { CourseType } from '../response/course.response'
+import { Course } from '../../domain/entities/course.entity'
+import { CourseType } from '../responses/course.response'
 import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 

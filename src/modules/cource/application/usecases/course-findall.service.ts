@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { CourseType } from '../response/course.response'
-import { Course } from '../entities/course.entity'
+import { CourseType } from '../responses/course.response'
+import { Course } from '../../domain/entities/course.entity'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 

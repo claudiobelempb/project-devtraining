@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
-import { CourseType } from '../response/course.response'
+import { CourseType } from '../responses/course.response'
 import { Repository } from 'typeorm'
-import { Course } from '../entities/course.entity'
+import { Course } from '../../domain/entities/course.entity'
 import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()

@@ -1,6 +1,6 @@
 import { Body, Controller, Param, Put } from '@nestjs/common'
-import { CourseUpdateService } from '../services/update-course.service'
-import { CourseType } from '../response/course.response'
+import { CourseUpdateService } from '../application/usecases/course-update.service'
+import { CourseType } from '../application/responses/course.response'
 
 @Controller('courses')
 export class UpdateCourseController {
