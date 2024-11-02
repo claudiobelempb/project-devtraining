@@ -14,9 +14,6 @@ export class Tag {
   @Column()
   name: string
 
-  @Column()
-  description: string
-
   @Column({ default: true })
   active?: boolean
 

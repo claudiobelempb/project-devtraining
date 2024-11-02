@@ -11,9 +11,10 @@ import { CourseUpdateService } from './application/usecases/course-update.servic
 import { CourseDeleteService } from './application/usecases/course-delete.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Course } from './domain/entities/course.entity'
+import { Tag } from '../tag/domain/entities/tag.entity'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Course])],
+  imports: [TypeOrmModule.forFeature([Course, Tag])],
   controllers: [
     CreateCourseController,
     FindAllCourseController,
