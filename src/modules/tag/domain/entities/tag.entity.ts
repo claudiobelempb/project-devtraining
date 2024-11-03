@@ -13,18 +13,26 @@ import { randomUUID } from 'node:crypto'
 @Entity('tag')
 export class Tag {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id: string = randomUUID()
 
   @Column()
   name: string
 
-  @Column({ default: true })
-  active?: boolean
+  @Column({ name: 'is_active', default: true })
+  isActive?: boolean
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt?: Date
 
   @ManyToMany(() => Course, course => course.tags)

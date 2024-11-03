@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto'
 import { Tag } from 'src/modules/tag/domain/entities/tag.entity'
 import {
   BeforeInsert,
@@ -10,12 +11,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 
-import { v4 as uuidv4 } from 'uuid'
-
 @Entity('course')
 export class Course {
   @PrimaryGeneratedColumn('uuid')
-  id: string = uuidv4()
+  id: string = randomUUID()
 
   @Column()
   name: string
@@ -23,13 +22,21 @@ export class Course {
   @Column()
   description: string
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ name: 'is_active', default: true })
   isActive?: boolean
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt?: Date
 
   @JoinTable()
@@ -43,6 +50,6 @@ export class Course {
     if (this.id) {
       return
     }
-    this.id = uuidv4()
+    this.id = randomUUID()
   }
 }
