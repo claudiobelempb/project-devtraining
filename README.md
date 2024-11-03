@@ -15,6 +15,7 @@ npm i @types/bcryptjs -D
 ```
 npx typeorm migration:create src/migrations/CreateCourseTable
 npx typeorm migration:create src/migrations/CreateTagTable
+npx typeorm migration:create src/migrations/CreateCourseTagTable
 
 npx typeorm migration:run -d dist/modules/database/orm-cli-config.js
 ```

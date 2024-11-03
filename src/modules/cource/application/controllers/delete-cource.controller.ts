@@ -1,5 +1,5 @@
 import { Controller, Delete, HttpCode, HttpStatus, Param } from '@nestjs/common'
-import { CourseDeleteService } from '../application/usecases/course-delete.service'
+import { CourseDeleteService } from '../usecases/course-delete.service'
 
 @Controller('courses')
 export class DeleteCourseController {

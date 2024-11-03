@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common'
-import { CourseCreateService } from '../application/usecases/course-create.service'
-import { CourseType } from '../application/responses/course.response'
-import { Course } from '../domain/entities/course.entity'
+import { CourseType } from '../responses/course.response'
+import { Course } from '../../domain/entities/course.entity'
+import { CourseCreateService } from '../usecases/course-create.service'
 
 @Controller('courses')
 export class CreateCourseController {
