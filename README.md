@@ -23,6 +23,13 @@ npx typeorm migration:run -d dist/modules/database/orm-cli-config.js
 npx typeorm migration:revert -d dist/modules/database/orm-cli-config.js
 ```
 
+### Docker
+```
+docker compose down
+rm -rf .docker/dbdata
+docker compose up -d
+```
+
 ### JSON
 
 ```
