@@ -20,7 +20,7 @@ export class CourseUpdateService {
     const tags =
       request.tags &&
       (await Promise.all(
-        request.tags.map(tag => this.preloadTagByName(tag.id)),
+        request.tags.map(tag => this.preloadTagByName(tag.name)),
       ))
     const entity = await this.courseRepository.preload({
       ...request,
@@ -32,11 +32,11 @@ export class CourseUpdateService {
     }
     return this.courseRepository.save(entity)
   }
-  private async preloadTagByName(id: string): Promise<Tag> {
-    const tag = await this.tagRepository.findOne({ where: { id } })
+  private async preloadTagByName(name: string): Promise<Tag> {
+    const tag = await this.tagRepository.findOne({ where: { name } })
     if (tag) {
       return tag
     }
-    return this.tagRepository.create({ id })
+    return this.tagRepository.create({ name })
   }
 }
